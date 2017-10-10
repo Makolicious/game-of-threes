@@ -10,31 +10,47 @@ namespace game_of_threes
     {
         static void Main(string[] args)
         {
-            int subjectNum = 100;
-            Console.WriteLine(subjectNum);
+            Console.WriteLine("Enter a number.");
+            string userInput = Console.ReadLine();
+            int subjectNum;
+            bool inputIsNum = false;
 
-            while (subjectNum != 1)
+            while (inputIsNum == false)
             {
-                if (subjectNum % 3 == 0)
+                if (int.TryParse(userInput, out subjectNum))
                 {
-                    Console.WriteLine(subjectNum + " 0");
-                    subjectNum = subjectNum / 3;
-                }
+                    Console.WriteLine(subjectNum);
+                    while (subjectNum != 1)
+                    {
+                        if (subjectNum % 3 == 0)
+                        {
+                            Console.WriteLine(subjectNum + " 0");
+                            subjectNum = subjectNum / 3;
+                        }
 
-                else if ((subjectNum + 1) % 3 == 0)
-                {
-                    Console.WriteLine(subjectNum + " +1");
-                    subjectNum = (subjectNum + 1) / 3;
-                }
+                        else if ((subjectNum + 1) % 3 == 0)
+                        {
+                            Console.WriteLine(subjectNum + " +1");
+                            subjectNum = (subjectNum + 1) / 3;
+                        }
 
-                else if ((subjectNum - 1) % 3 == 0)
+                        else if ((subjectNum - 1) % 3 == 0)
+                        {
+                            Console.WriteLine(subjectNum + " -1");
+                            subjectNum = (subjectNum - 1) / 3;
+                        }
+                    }
+                    Console.WriteLine(subjectNum);
+                    Console.ReadLine();
+                    inputIsNum = true;
+                }
+                else
                 {
-                    Console.WriteLine(subjectNum + " -1");
-                    subjectNum = (subjectNum - 1) / 3;
+                    Console.WriteLine("Please enter a valid number.");
+                    Console.ReadLine();
+                    
                 }
             }
-
-            Console.ReadLine();
         }
     }
 }
